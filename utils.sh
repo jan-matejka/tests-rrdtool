@@ -3,8 +3,12 @@ get_cur_version() {
 }
 
 run() {
-	local log_file
+	local log_file dir
 	. $1
-	log_file=/tmp/rrdtool_`basename $1`.log
+
+	dir=/tmp/rrdtool_`get_cur_version`
+	test -d $dir || mkdir $dir
+
+	log_file=$dir/`basename $1`.log
 	testcase > $log_file
 }
