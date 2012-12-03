@@ -1,5 +1,7 @@
 #! /bin/sh
 
+set -eu
+
 . `dirname $0`/utils.sh
 
 main() {
@@ -14,6 +16,13 @@ main() {
 	shift $((OPTIND - 1))
 
 	DBFILE=/tmp/test.rrd
+	BASEDIR=/tmp/rrdtool_tests/`get_cur_version`
+
+	OUTDIR=$BASEDIR/out
+	LOGDIR=$BASEDIR/log
+	for i in $OUTDIR $LOGDIR; do
+		test -d $i || mkdir $i -p
+	done
 
 	for i in `dirname $0`/*\.test_*.sh; do
 		run $i
