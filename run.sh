@@ -23,6 +23,7 @@ main() {
 	for i in $OUTDIR $LOGDIR; do
 		test -d $i || mkdir $i -p
 	done
+	test -f $DBFILE && rm $DBFILE
 
 	for i in `dirname $0`/*\.test_*.sh; do
 		run $i
