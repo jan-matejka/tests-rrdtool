@@ -15,15 +15,15 @@ main() {
 
 	shift $((OPTIND - 1))
 
-	DBFILE=/tmp/test.rrd
 	BASEDIR=/tmp/rrdtool_tests/`get_cur_version`
+
+	test -f $BASEDIR && rm $BASEDIR -r
 
 	OUTDIR=$BASEDIR/out
 	LOGDIR=$BASEDIR/log
 	for i in $OUTDIR $LOGDIR; do
 		test -d $i || mkdir $i -p
 	done
-	test -f $DBFILE && rm $DBFILE
 
 	for i in `dirname $0`/*\.test_*.sh; do
 		run $i
