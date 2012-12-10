@@ -17,7 +17,7 @@ main() {
 
 	BASEDIR=/tmp/rrdtool_tests/`get_cur_version`
 
-	test -f $BASEDIR && rm $BASEDIR -r
+	test -d $BASEDIR && rm $BASEDIR -r
 
 	OUTDIR=$BASEDIR/out
 	LOGDIR=$BASEDIR/log
@@ -26,6 +26,7 @@ main() {
 	done
 
 	for i in `dirname $0`/*\.test_*.sh; do
+		echo "running $i"
 		run $i
 	done
 }
