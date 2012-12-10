@@ -59,7 +59,6 @@ testcase() {
 		'--vertical-label' "Memory used (%)" \
 		'--lower-limit' '0' \
 		'--upper-limit' '100' \
-		'--border' '0' \
 		'--rigid' \
 		"DEF:used1=$DBFILE:used:AVERAGE" \
 		"DEF:used2=$DBFILE:used:AVERAGE:start=$START" \
