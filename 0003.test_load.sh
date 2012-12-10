@@ -6,9 +6,11 @@ testcase() {
 	# The same as speed test but uses GAUGE instead of COUNTER
 	START=920804400
 	echo "create"
+	UPDATE_RATE=300
 	rrdtool create $DBFILE \
 		--start $START \
-		DS:load:GAUGE:600:0:10 \
+		-s $UPDATE_RATE \
+		DS:load:GAUGE:$(($UPDATE_RATE*2)):0:10 \
 		RRA:AVERAGE:0.5:1:24 \
 		RRA:AVERAGE:0.5:6:10
 
