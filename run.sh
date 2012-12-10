@@ -18,6 +18,7 @@ main() {
 	BASEDIR=/tmp/rrdtool_tests/`get_cur_version`
 
 	test -d $BASEDIR && rm $BASEDIR -r
+	echo "BASEDIR: $BASEDIR"
 
 	OUTDIR=$BASEDIR/out
 	LOGDIR=$BASEDIR/log
