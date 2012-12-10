@@ -86,28 +86,41 @@ testcase() {
 		'GPRINT:pused1:AVERAGE:%13.0lf%s' \
 		'GPRINT:pused1:MAX:%13.0lf%s'"\\n" \
 		"COMMENT: \\n" \
+\
 		'VDEF:D2=pused2,LSLSLOPE' \
 		'VDEF:H2=pused2,LSLINT' \
+		'VDEF:D3=pused3,LSLSLOPE' \
+		'VDEF:H3=pused3,LSLINT' \
+		'VDEF:D5=pused5,LSLSLOPE' \
+		'VDEF:H5=pused5,LSLINT' \
+\
 		'CDEF:avg2=pused2,POP,D2,COUNT,*,H2,+' \
 		'CDEF:abc2=avg2,90,100,LIMIT' \
 		'VDEF:minabc2=abc2,FIRST' \
 		'VDEF:maxabc2=abc2,LAST' \
-		'VDEF:D3=pused3,LSLSLOPE' \
-		'VDEF:H3=pused3,LSLINT' \
+\
 		'CDEF:avg3=pused3,POP,D3,COUNT,*,H3,+' \
 		'CDEF:abc3=avg3,90,100,LIMIT' \
 		'VDEF:minabc3=abc3,FIRST' \
 		'VDEF:maxabc3=abc3,LAST' \
+\
+		'CDEF:avg5=pused5,POP,D5,COUNT,*,H5,+' \
+		'CDEF:abc5=avg5,90,100,LIMIT' \
+		'VDEF:minabc5=abc5,FIRST' \
+		'VDEF:maxabc5=abc5,LAST' \
+\
 		"AREA:abc2#FFBB0077" \
 		"AREA:abc3#0077FF77" \
-		"LINE2:abc2#FFBB00" \
+		"AREA:abc5#0077FF77" \
+\
+		"LINE2:abc5#FFBB00" \
 		"LINE2:abc3#0077FF" \
-		"LINE1:avg2#FFBB00:Trend since 24 Oct 2009                      :dashes=10" \
-		"LINE1:avg3#0077FF:Trend since 1 week\\n:dashes=10" \
+		"LINE1:avg5#FFBB00:Trend since 12\\:40                      :dashes=10" \
+		"LINE1:avg3#0077FF:Trend since 12\\:00 week\\n:dashes=10" \
 		"GPRINT:minabc2:  Reach  90% @ %c :strftime" \
-		"GPRINT:minabc3:  Reach  90% @ %c \\n:strftime" \
+		"GPRINT:minabc5:  Reach  90% @ %c \\n:strftime" \
 		"GPRINT:maxabc2:  Reach 100% @ %c :strftime" \
-		"GPRINT:maxabc3:  Reach 100% @ %c \\n:strftime"
+		"GPRINT:maxabc5:  Reach 100% @ %c \\n:strftime"
 
 
 
